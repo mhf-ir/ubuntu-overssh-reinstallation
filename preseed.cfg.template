@@ -17,5 +17,5 @@ d-i netcfg/domain string DOMAIN
 d-i netcfg/wireless_wep string
 d-i hw-detect/load_firmware boolean true
 d-i anna/choose_modules string network-console
-d-i network-console/password password PAASWORD
-d-i network-console/password-again password PAASWORD
+d-i network-console/password password PASSWORD
+d-i network-console/password-again password PASSWORD
