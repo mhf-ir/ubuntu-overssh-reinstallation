@@ -1,0 +1,21 @@
+d-i debian-installer/locale string en_US
+d-i debian-installer/language string en
+d-i debian-installer/country string COUNTRY
+d-i debian-installer/locale string en_US.UTF-8
+d-i netcfg/choose_interface select INTERFACE_DEV
+d-i netcfg/link_wait_timeout string 1
+d-i netcfg/disable_autoconfig boolean true
+d-i netcfg/dhcp_failed note
+d-i netcfg/dhcp_options select Configure network manually
+d-i netcfg/get_ipaddress string INTERFACE_IP
+d-i netcfg/get_netmask string INTERFACE_NETMASK
+d-i netcfg/get_gateway string INTERFACE_GATEWAY
+d-i netcfg/get_nameservers string INTERFACE_NAMESERVERS
+d-i netcfg/confirm_static boolean true
+d-i netcfg/hostname string HOSTNAME
+d-i netcfg/domain string DOMAIN
+d-i netcfg/wireless_wep string
+d-i hw-detect/load_firmware boolean true
+d-i anna/choose_modules string network-console
+d-i network-console/password password PAASWORD
+d-i network-console/password-again password PAASWORD
