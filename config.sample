@@ -11,7 +11,7 @@ INTERFACE_GATEWAY='10.1.1.1'
 INTERFACE_NAMESERVERS='4.2.2.4'
 
 # preseed file: upload created preseed.cfg to your own host before reboot system
-PRESEED_URL="http://10.1.1.2/preseed.cfg"
+PRESEED_URL="https://mhf-ir.github.io/preseed.cfg"
 
 # ssh installer password
 PASSWORD="tHISiSpASSWORD"
