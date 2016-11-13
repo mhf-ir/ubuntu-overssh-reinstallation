@@ -13,33 +13,32 @@ Create your own netiso and reinstall it over ssh. You can partion yor server as 
 1. Installed ubuntu version on server via ssh access
 2. Clone this repo to your server
 3. Copy `config.sample` to `config` file and edit field by field exactly:
+    ```
+    #!/bin/bash
 
-```
-#!/bin/bash
+    # country
+    COUNTRY='IR'
 
-# country
-COUNTRY='IR'
+    # network: check network before create iso file
+    INTERFACE_DEV='eth0'
+    INTERFACE_IP='10.1.1.100'
+    INTERFACE_NETMASK='255.255.255.0'
+    INTERFACE_GATEWAY='10.1.1.1'
+    INTERFACE_NAMESERVERS='4.2.2.4'
 
-# network: check network before create iso file
-INTERFACE_DEV='eth0'
-INTERFACE_IP='10.1.1.100'
-INTERFACE_NETMASK='255.255.255.0'
-INTERFACE_GATEWAY='10.1.1.1'
-INTERFACE_NAMESERVERS='4.2.2.4'
+    # preseed file: upload created preseed.cfg to your own host before reboot system
+    PRESEED_URL="http://10.1.1.2/preseed.cfg"
 
-# preseed file: upload created preseed.cfg to your own host before reboot system
-PRESEED_URL="http://10.1.1.2/preseed.cfg"
+    # ssh installer password
+    PASSWORD="tHISiSpASSWORD"
 
-# ssh installer password
-PASSWORD="tHISiSpASSWORD"
+    # hostname and domain
+    HOSTNAME="${INTERFACE_IP//\./\-}-$COUNTRY_LOWER"
+    DOMAIN="servers.aasaam.net"
 
-# hostname and domain
-HOSTNAME="${INTERFACE_IP//\./\-}-$COUNTRY_LOWER"
-DOMAIN="servers.aasaam.net"
-
-# lowercase of country code dont change it
-COUNTRY_LOWER="${COUNTRY,,}"
-```
+    # lowercase of country code dont change it
+    COUNTRY_LOWER="${COUNTRY,,}"
+    ```
 4. Upload your `preseed.cfg` file to your own host.
 
 #### Clone repository
@@ -63,7 +62,7 @@ Remember you must do as root user
 ```
 ./create-iso.sh
 ...
-Your network iso is ready '/tmp//ubuntu-overssh-reinstallation/ubuntu-overssh-reinstall.iso'
+Your network iso is ready '/tmp/ubuntu-overssh-reinstallation/ubuntu-overssh-reinstall.iso'
 ```
 #### Update grub imageboot
 Remember you must do as root user also
