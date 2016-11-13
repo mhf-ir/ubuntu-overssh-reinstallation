@@ -17,7 +17,7 @@ PRESEED_URL="http://10.1.1.2/preseed.cfg"
 PASSWORD="tHISiSpASSWORD"
 
 # hostname and domain
-HOSTNAME="${INTERFACE_IP//\./\-}-$COUNTRY_LOWER"
+HOSTNAME="${INTERFACE_IP//\./\-}"
 DOMAIN="servers.aasaam.net"
 
 # lowercase of country code dont change it
