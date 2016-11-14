@@ -19,3 +19,5 @@ d-i hw-detect/load_firmware boolean true
 d-i anna/choose_modules string network-console
 d-i network-console/password password PASSWORD
 d-i network-console/password-again password PASSWORD
+# d-i pkgsel/include string ntp htop iotop curl
+# d-i preseed/late_command string in-target post-install.sh

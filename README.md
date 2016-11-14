@@ -14,8 +14,6 @@ Create your own netiso and reinstall it over ssh. You can partion yor server as 
 2. Clone this repo to your server
 3. Copy `config.sample` to `config` file and edit field by field exactly:
     ```
-    #!/bin/bash
-
     # country
     COUNTRY='IR'
 
@@ -27,14 +25,14 @@ Create your own netiso and reinstall it over ssh. You can partion yor server as 
     INTERFACE_NAMESERVERS='4.2.2.4'
 
     # preseed file: upload created preseed.cfg to your own host before reboot system
-    PRESEED_URL="http://10.1.1.2/preseed.cfg"
+    PRESEED_URL="http://yourserver.tld/preseed.cfg"
 
     # ssh installer password
     PASSWORD="tHISiSpASSWORD"
 
     # hostname and domain
-    HOSTNAME="${INTERFACE_IP//\./\-}-$COUNTRY_LOWER"
-    DOMAIN="servers.aasaam.net"
+    HOSTNAME="${INTERFACE_IP//\./\-}"
+    DOMAIN="servers.domain.org"
 
     # lowercase of country code dont change it
     COUNTRY_LOWER="${COUNTRY,,}"
@@ -70,6 +68,14 @@ Remember you must do as root user also
 ./grub.sh
 ...
 Your password is tHISiSpASSWORD
+```
+#### Upload your preseed file
+Upload your preseed.cfg file to configured location `PRESEED_URL`.
+
+You can test it. We must get 200 response as we expected
+```
+curl -o /dev/null --silent --head --write-out '%{http_code}\n' http://yourserver.tld/preseed.cfg
+200
 ```
 #### Reboot
 ```
