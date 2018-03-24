@@ -4,15 +4,20 @@ If your ISP/Datacenter dosn't provide standard or trusted iso for your server. G
 
 I have same situation installed ubuntu has bad partition table or huge list of stupid package installed. Datacenter network is my primary concern or it's really cheap price but administrators dosn't care. What should i do? That's my way to solve this issue easily.
 
-Ask them to install ubuntu server what ever is it. re install it over ssh.
+Ask them to install ubuntu server what ever is it. re install it over ssh, repartition and get clean installation of ubuntu server.
 
 Create your own netiso and reinstall it over ssh. You can partion yor server as you desire. And set more configuration using [ubuntu preseed](https://help.ubuntu.com/lts/installation-guide/armhf/apbs02.html) just over ssh; no kvm/ipmi/vnc required.
 
-### Requirement
+It's simple, create modified iso based on your network and preseed url file and continue installation over ssh.
+
+I use mini.iso because it's small and get most packages from ubuntu repository so you server after installation is fully updated.
+
+### :warning: Requirement
 
 1. Installed ubuntu version on server via ssh access
-2. Clone this repo to your server
-3. Copy `config.sample` to `config` file and edit field by field exactly:
+2. Root access require (or sudo user).
+3. Clone this repo to your server
+4. Copy `config.sample` to `config` file and edit field by field exactly:
     ```
     # country
     COUNTRY='IR'
@@ -32,12 +37,12 @@ Create your own netiso and reinstall it over ssh. You can partion yor server as 
 
     # hostname and domain
     HOSTNAME="${INTERFACE_IP//\./\-}"
-    DOMAIN="servers.domain.org"
+    DOMAIN="example.tld"
 
     # lowercase of country code dont change it
     COUNTRY_LOWER="${COUNTRY,,}"
     ```
-4. Upload your `preseed.cfg` file to your own host.
+5. Upload your `preseed.cfg` file to your own host.
 
 #### Find Predictable Network Interface Names
 
@@ -58,7 +63,7 @@ cd ubuntu-overssh-reinstallation
 ```
 #### Config
 See `config.sample` and change it.
-⚠ Carefull about your network settings. It's can hold your server until get new kvm/ipmi/vnc to restore the ssh again.
+:warning: Carefull about your network settings. It's can hold your server until get new kvm/ipmi/vnc to restore the ssh again.
 ```
 cp config.sample config
 vim config
@@ -89,7 +94,7 @@ You can test it. We must get 200 response as we expected
 curl -o /dev/null --silent --head --write-out '%{http_code}\n' http://yourserver.tld/preseed.cfg
 200
 ```
-⚠ If your webserver not reachable you must reboot your server to get preseed file. so test it before reboot your server.
+:warning: If your webserver not reachable you must reboot your server to get preseed file. so test it before reboot your server.
 
 #### Reboot
 ```
@@ -102,4 +107,4 @@ ssh installer@10.1.1.100
 ```
 #### Continue installation of ubuntu
 ---
-✅ This script test on Ubuntu Server 16.04 and 18.04.
+:heavy_check_mark: This script test on Ubuntu Server 16.04 and 18.04.
