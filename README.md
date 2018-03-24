@@ -39,6 +39,17 @@ Create your own netiso and reinstall it over ssh. You can partion yor server as 
     ```
 4. Upload your `preseed.cfg` file to your own host.
 
+#### Find Predictable Network Interface Names
+
+If your current installation of ubuntu not using **Predictable Network Interface Names** you can find out the name by using this command for example for `eth0`:
+
+```
+udevadm test /sys/class/net/eth0 2>/dev/null | grep ID_NET_NAME_
+ID_NET_NAME_MAC=enxd4bed95f24db
+ID_NET_NAME_PATH=enp7s0
+```
+You can use `enp7s0` as predictable network interface name.
+
 #### Clone repository
 ```
 cd /tmp
@@ -46,7 +57,8 @@ git clone https://github.com/mhf-ir/ubuntu-overssh-reinstallation.git
 cd ubuntu-overssh-reinstallation
 ```
 #### Config
-See `config.sample` and change it. Carefull about your network settings. It's can hold your server until get new kvm/ipmi/vnc to restore the ssh again.
+See `config.sample` and change it.
+⚠ Carefull about your network settings. It's can hold your server until get new kvm/ipmi/vnc to restore the ssh again.
 ```
 cp config.sample config
 vim config
@@ -77,6 +89,8 @@ You can test it. We must get 200 response as we expected
 curl -o /dev/null --silent --head --write-out '%{http_code}\n' http://yourserver.tld/preseed.cfg
 200
 ```
+⚠ If your webserver not reachable you must reboot your server to get preseed file. so test it before reboot your server.
+
 #### Reboot
 ```
 reboot
@@ -87,6 +101,5 @@ Wait it until boot to iso complete and install require packages then
 ssh installer@10.1.1.100
 ```
 #### Continue installation of ubuntu
-
 ---
-This script test on Ubuntu 16.04 Server.
+✅ This script test on Ubuntu Server 16.04 and 18.04.

@@ -18,7 +18,7 @@ PASSWORD="tHISiSpASSWORD"
 
 # hostname and domain
 HOSTNAME="${INTERFACE_IP//\./\-}"
-DOMAIN="servers.domain.org"
+DOMAIN="example.tld"
 
 # lowercase of country code dont change it
 COUNTRY_LOWER="${COUNTRY,,}"

@@ -61,8 +61,8 @@ cp -rT /mnt/ubuntu-overssh-iso $PROJECTPATH/ubuntu-overssh-iso
 cp $PROJECTPATH/preseed.cfg.template $PROJECTPATH/ubuntu-overssh-iso/preseed.cfg
 
 # replace vairables
-sed -i 's/timeout 0/timeout 1/g' $PROJECTPATH/ubuntu-overssh-iso/prompt.cfg
-sed -i 's/timeout 0/timeout 1/g' $PROJECTPATH/ubuntu-overssh-iso/isolinux.cfg
+sed -i 's/timeout 10/timeout 1/g' $PROJECTPATH/ubuntu-overssh-iso/prompt.cfg
+sed -i 's/timeout 10/timeout 1/g' $PROJECTPATH/ubuntu-overssh-iso/isolinux.cfg
 
 sed -i "s/INTERFACE_DEV/$INTERFACE_DEV/g" $PROJECTPATH/ubuntu-overssh-iso/preseed.cfg
 sed -i "s/INTERFACE_IP/$INTERFACE_IP/g" $PROJECTPATH/ubuntu-overssh-iso/preseed.cfg
