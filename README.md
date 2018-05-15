@@ -1,5 +1,9 @@
 # Ubuntu Overssh Reinstallation
 
+![ubuntu 18.04 bionic](https://img.shields.io/badge/ubuntu%2018.04%20bionic-tested-green.svg "ubuntu 18.04 bionic")
+![ubuntu 16.04 trusty](https://img.shields.io/badge/ubuntu%2016.04%20trusty-tested-green.svg "ubuntu 16.04 trusty")
+![MIT License](https://img.shields.io/badge/license-MIT-ff9900.svg "MIT License")
+
 If your ISP/Datacenter dosn't provide standard or trusted iso for your server. Get ugly server from it with installed version of Ubuntu server.
 
 I have same situation installed ubuntu has bad partition table or huge list of stupid package installed. Datacenter network is my primary concern or it's really cheap price but administrators dosn't care. What should i do? That's my way to solve this issue easily.
